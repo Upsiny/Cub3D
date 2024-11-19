@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/11/19 05:12:33 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/19 06:58:57 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,12 @@
 # define MOVE_SPEED	10
 # define ROT_SPEED	0.05
 # define EPSILON	0.000001
-# define PURPLE 0x3B2077 //to rm
-# define BLUE 0x0000FF //to rm
-# define GREEN 0x00FF00 //to rm
-# define WHITE 0xFFFFFF //to rm
 
 typedef struct s_raycasting
 {
-	double		r_angle;	// angle rayon
-	double		distance;	// distance du mur
-	int			flag;			// je touche un mur?
+	double		r_angle;
+	double		distance;
+	int			flag;
 	double		t_px;
 	double		b_px;
 	double		step_x;

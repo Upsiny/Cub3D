@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:13:11 by hguillau          #+#    #+#             */
-/*   Updated: 2024/11/19 04:03:36 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/19 06:55:19 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	hit_wall(t_data *data, double x, double y)
 
 double	get_h_inter(t_data *data, double angle)
 {
-	double	h_x;
 	double	h_y;
 	int		is_top;
 
@@ -62,24 +61,23 @@ double	get_h_inter(t_data *data, double angle)
 	}
 	else
 		h_y = (floor(data->p.pos_y / TILE_SIZE) * TILE_SIZE) + TILE_SIZE;
-	h_x = data->p.pos_x + (data->p.pos_y - h_y) / tan(angle);
+	data->r.h_x = data->p.pos_x + (data->p.pos_y - h_y) / tan(angle);
 	data->r.step_x = TILE_SIZE / tan(angle);
 	if ((unit_circle(angle, 'h') && data->r.step_x > 0)
 		|| (!unit_circle(angle, 'h') && data->r.step_x < 0))
 		data->r.step_x *= -1;
-	while (hit_wall(data, h_x, h_y - is_top))
+	while (hit_wall(data, data->r.h_x, h_y - is_top))
 	{
-		h_x += data->r.step_x;
+		data->r.h_x += data->r.step_x;
 		h_y += data->r.step_y;
 	}
-	data->r.h_x = h_x;
-	return (sqrt(pow(h_x - data->p.pos_x, 2) + pow(h_y - data->p.pos_y, 2)));
+	return (sqrt(pow(data->r.h_x - data->p.pos_x, 2)
+			+ pow(h_y - data->p.pos_y, 2)));
 }
 
 double	get_v_inter(t_data *data, double angle)
 {
 	double	v_x;
-	double	v_y;
 	int		is_left;
 
 	is_left = 0;
@@ -92,18 +90,18 @@ double	get_v_inter(t_data *data, double angle)
 		data->r.step_x *= -1;
 		is_left = 1;
 	}
-	v_y = data->p.pos_y + (data->p.pos_x - v_x) * tan(angle);
+	data->r.v_y = data->p.pos_y + (data->p.pos_x - v_x) * tan(angle);
 	data->r.step_y = TILE_SIZE * tan(angle);
 	if ((unit_circle(angle, 'v') && data->r.step_y > 0)
 		|| (!unit_circle(angle, 'v') && data->r.step_y < 0))
 		data->r.step_y *= -1;
-	while (hit_wall(data, v_x - is_left, v_y))
+	while (hit_wall(data, v_x - is_left, data->r.v_y))
 	{
 		v_x += data->r.step_x;
-		v_y += data->r.step_y;
+		data->r.v_y += data->r.step_y;
 	}
-	data->r.v_y = v_y;
-	return (sqrt(pow(v_x - data->p.pos_x, 2) + pow(v_y - data->p.pos_y, 2)));
+	return (sqrt(pow(v_x - data->p.pos_x, 2)
+			+ pow(data->r.v_y - data->p.pos_y, 2)));
 }
 
 void	cast_ray(t_data *data, t_images *img)
