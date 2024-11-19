@@ -6,11 +6,11 @@
 #    By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 11:42:32 by akunegel          #+#    #+#              #
-#    Updated: 2024/10/30 12:11:44 by akunegel         ###   ########.fr        #
+#    Updated: 2024/11/19 07:18:21 by hguillau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Cub3d
+NAME	= cub3D
 
 MLXREP	=	./library/mlx
 MLX		=	-L./$(MLXREP) -lmlx -L/usr/lib -I$(MLXREP) -lXext -lX11 -lm -lz
