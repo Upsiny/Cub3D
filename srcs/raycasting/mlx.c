@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:44:18 by hguillau          #+#    #+#             */
-/*   Updated: 2024/11/14 13:03:15 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:37:17 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	init_mlx(t_data *data)
 void	start_mlx(t_data *data)
 {
 	init_mlx(data);
+	get_images(data);
 	data->mlx_win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	mlx_hook(data->mlx_win, 17, 0, ft_close, data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, handle_keypress, data);

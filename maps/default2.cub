@@ -1,3 +1,11 @@
+NO ./xpm/door.xpm
+SO ./xpm/newall.xpm
+WE ./xpm/odoor.xpm
+EA ./xpm/roolf.xpm
+
+F 220,100,0
+C 0,120,250
+
 111111111111111111111
 100000001000000010001
 101110101011111111101

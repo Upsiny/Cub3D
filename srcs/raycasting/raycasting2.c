@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:48 by hguillau          #+#    #+#             */
-/*   Updated: 2024/11/13 14:27:40 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/19 06:39:40 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,43 @@ int	get_wall_color(t_data *data, int flag)
 			return (WHITE);
 	}
 }
-/*
-int get_textures(t_data *data, int flag)
+
+t_texture	*get_textures(t_data *data, int flag)
 {
 	data->r.r_angle = nor_angle(data->r.r_angle);
 	if (flag == 0)
 	{
 		if (data->r.r_angle > M_P2 && data->r.r_angle < M_P3)
-			return (data->tex_ea); // east
+			return (&data->images.ea);
 		else
-			return (data->tex_we); // west
+			return (&data->images.we);
 	}
 	else
 	{
 		if (data->r.r_angle > 0 && data->r.r_angle < M_PI)
-			return (data->tex_no); //north
+			return (&data->images.no);
 		else
-			return (data->tex_so); // south
+			return (&data->images.so);
 	}
-}*/
+}
 
-void	color_wall(t_data *data, int ray, t_images *img)
+void	color_wall(t_data *data, int ray, t_images *img, double wall_h)
 {
-	int	color;
+	int			color;
+	double			dx;
+	t_texture	*t;
 
-	color = get_wall_color(data, data->r.flag);
+	t = get_textures(data, data->r.flag);
+	get_text_x(data, t);
+	dx = t->height / wall_h;
+	data->r.text_y = 0;
 	while (data->r.b_px < data->r.t_px)
-		my_mlx_pixel_put(img, ray, data->r.b_px++, color);
+	{
+		data->r.text_y = (data->r.b_px - (WIN_HEIGHT / 2) + (wall_h / 2)) * dx;
+		color = get_color_from_texture(t, data->r.text_x, data->r.text_y);
+		my_mlx_pixel_put(img, ray, data->r.b_px, color);
+		data->r.b_px++;
+	}
 }
 
 void	draw_wall(t_data *data, int ray, t_images *img)
@@ -83,5 +93,5 @@ void	draw_wall(t_data *data, int ray, t_images *img)
 		data->r.t_px = WIN_HEIGHT;
 	if (data->r.b_px < 0)
 		data->r.b_px = 0;
-	color_wall(data, ray, img);
+	color_wall(data, ray, img, wall_h);
 }

@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/11/14 11:53:57 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/19 05:12:33 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ typedef struct s_raycasting
 	double		b_px;
 	double		step_x;
 	double		step_y;
+	int			text_x;
+	int			text_y;
+	double		wall_x;
+	double		h_x;
+	double		v_y;
 }				t_raycasting;
 
 typedef struct s_player
@@ -124,7 +129,7 @@ typedef struct s_data
 	t_paths					paths;
 	t_textures				t;
 	t_raycasting			r;
-	t_i						img;
+	t_i						images;
 	void					*mlx;
 	void					*mlx_win;
 	int						fd;
@@ -175,7 +180,9 @@ void			cast_ray(t_data *data, t_images *img);
 void			draw_wall(t_data *data, int ray, t_images *img);
 double			nor_angle(double angle);
 
-//debug
-void	print_map(t_data *data); //debug
+//textures
+void			get_images(t_data *data);
+int				get_color_from_texture(t_texture *t, int x, int y);
+void			get_text_x(t_data *data, t_texture *t);
 
 #endif

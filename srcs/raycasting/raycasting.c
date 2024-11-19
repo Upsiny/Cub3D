@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:13:11 by hguillau          #+#    #+#             */
-/*   Updated: 2024/11/14 12:32:14 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/19 04:03:36 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ double	get_h_inter(t_data *data, double angle)
 		h_x += data->r.step_x;
 		h_y += data->r.step_y;
 	}
+	data->r.h_x = h_x;
 	return (sqrt(pow(h_x - data->p.pos_x, 2) + pow(h_y - data->p.pos_y, 2)));
 }
 
@@ -101,6 +102,7 @@ double	get_v_inter(t_data *data, double angle)
 		v_x += data->r.step_x;
 		v_y += data->r.step_y;
 	}
+	data->r.v_y = v_y;
 	return (sqrt(pow(v_x - data->p.pos_x, 2) + pow(v_y - data->p.pos_y, 2)));
 }
 
