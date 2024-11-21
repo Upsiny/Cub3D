@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/11/19 06:58:57 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:10:28 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int				check_valid_rgb(t_data *data);
 void			check_rgb(t_data *data);
 void			get_map(t_data *data);
 int				get_longest_line(char **file);
-int				get_map_lines(char **file, t_data *data);
+int				get_map_lines(char **file);
 void			check_map_chars(t_data *data, int i);
 void			check_map_playable(t_data *data, int x, int y);
 void			get_images(t_data *data);

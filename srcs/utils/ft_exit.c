@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:55 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/23 00:51:39 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:10:54 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	free_map(t_data *data)
 
 void	free_paths(t_data *data)
 {
-	int	i;
-
 	if (data->paths.pc)
 		free(data->paths.pc);
 	if (data->paths.pf)

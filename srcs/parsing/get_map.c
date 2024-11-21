@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:47:19 by akunegel          #+#    #+#             */
-/*   Updated: 2024/11/14 13:02:45 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:10:02 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	cpy_map(t_data *data)
 	data->map.map[i] = NULL;
 }
 
-int	get_map_lines(char **file, t_data *data)
+int	get_map_lines(char **file)
 {
 	int	i;
 
@@ -126,12 +126,12 @@ void	get_map(t_data *data)
 	int	j;
 
 	data->map.map = malloc(sizeof(char *)
-			* (get_map_lines(data->tmp, data) + 1));
+			* (get_map_lines(data->tmp) + 1));
 	if (!data->map.map)
 		exit(ft_exit(data, "Error: Malloc error"));
 	i = get_longest_line(data->tmp);
 	j = 0;
-	while (j < get_map_lines(data->tmp, data))
+	while (j < get_map_lines(data->tmp))
 	{
 		data->map.map[j] = (char *)malloc(sizeof(char) * (i + 1));
 		if (data->map.map[j] == NULL)

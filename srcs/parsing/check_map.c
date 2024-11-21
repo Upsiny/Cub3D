@@ -6,7 +6,7 @@
 /*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:41:49 by akunegel          #+#    #+#             */
-/*   Updated: 2024/11/14 13:01:56 by hguillau         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:10:40 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	verify_map_leaks(char **map, t_data *data)
 		{
 			if (map[i][j] == '0')
 			{
-				if (i >= get_map_lines(data->tmp, data) - 1
+				if (i >= get_map_lines(data->tmp) - 1
 					|| j >= get_longest_line(data->tmp) - 1 || i == 0 || j == 0)
 					exit(ft_exit(data, "Error: Map is opened"));
 				if (map[i + 1][j] == '2' || map[i - 1][j] == '2'
@@ -49,14 +49,14 @@ void	verify_if_player_stuck(t_data *data)
 
 void	check_map_playable(t_data *data, int x, int y)
 {
-	if (get_map_lines(data->tmp, data) < 3)
+	if (get_map_lines(data->tmp) < 3)
 		exit(ft_exit(data, "Error: Map unplayable"));
 	if (!data->p.dir)
 		exit (ft_exit(data, "Error: Player missing"));
 	(void)y;
 	(void)x;
 	data->map.width = get_longest_line(data->tmp);
-	data->map.length = get_map_lines(data->tmp, data);
+	data->map.length = get_map_lines(data->tmp);
 	verify_map_leaks(data->map.map, data);
 	verify_if_player_stuck(data);
 }
