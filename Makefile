@@ -6,7 +6,7 @@
 #    By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 11:42:32 by akunegel          #+#    #+#              #
-#    Updated: 2024/11/21 14:16:20 by hguillau         ###   ########.fr        #
+#    Updated: 2024/11/21 14:18:04 by hguillau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= cub3D
 MLXREP	=	./library/mlx
 MLX		=	-L./$(MLXREP) -lmlx -L/usr/lib -I$(MLXREP) -lXext -lX11 -lm -lz
 CC		=	gcc $(FLAGS)
-FLAGS	=	-Wall -Wextra -Werror -Ilibrary -I./ -I./$(MLXREP) -I/usr/include -O3 -g -fsanitize=address
+FLAGS	=	-Wall -Wextra -Werror -Ilibrary -I./ -I./$(MLXREP) -I/usr/include -O3 #-g -fsanitize=address
 RM		=	rm -rf
 SRC		=	srcs/parsing/check_map.c srcs/parsing/check_rgb.c srcs/parsing/get_file.c srcs/parsing/get_map.c srcs/parsing/get_paths.c srcs/parsing/get_t_paths.c srcs/parsing/parsing.c srcs/parsing/paths_checks.c \
 			srcs/utils/ft_exit.c srcs/utils/ft_split.c srcs/utils/utils.c srcs/utils/utils2.c \
