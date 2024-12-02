@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hguillau <hguillau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:04:12 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 02:04:14 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:25:34 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 	{
-		strs = malloc(sizeof(char) * 1);
+		strs = malloc(sizeof(char *) * 1);
 		if (!strs)
 			return (NULL);
-		*strs = NULL;
+		strs[0] = NULL;
 		return (strs);
 	}
 	wordcount = ft_count_words(s, c);
